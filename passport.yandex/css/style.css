@@ -39,14 +39,22 @@ body
     width: 495px;
 }
 
+.input-container
+{
+    width: 325px;
+    box-sizing: border-box;
+}
+
 .input-block
 {
     margin: 0 0 21px 0;
+    width: 100%;
 }
 
 .input-label
 {
     margin: 0 0 7px 0;
+    width: 100%;
 }
 
 .input-text
@@ -55,7 +63,17 @@ body
     padding: 5px 10px 5px 10px;
     border: 1px solid rgba(0,0,0,.27);
     box-shadow: 0 1px 0 rgba(255,255,255,.2), inset 0 1px 1px rgba(0,0,0,.1);
-    width: 325px;
     height: 32px;
+    width: 100%;
 }
 
+.input-password
+{
+    margin-bottom: 6px;
+}
+
+.password_control
+{
+    height: 6px;
+    background: #DDD;
+}
