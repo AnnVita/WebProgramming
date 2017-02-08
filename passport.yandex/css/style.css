@@ -34,9 +34,9 @@ body
 .container
 {
     margin: 0 auto;
-    padding: 56px 0 0 0;
+    padding: 56px 0 0 204px;
     color: #666;
-    width: 495px;
+    width: 700px;
 }
 
 .input-container
@@ -127,4 +127,15 @@ body
     border-width: 1px;
     border-radius: 3px;
     border-color: #a69980;
+}
+
+.user-assigment-accept-label
+{
+    line-height: 1.5;
+}
+
+.user-assigment-accept-label a
+{
+    text-decoration: none;
+    color: #0072bc;
 }
