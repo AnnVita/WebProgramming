@@ -30,9 +30,13 @@ var CCircle = function () {
     };
     this.setCenter = function (point)
     {
-        if(!isNaN(point.x) && !isNaN(point.y))
+        if(!isNaN(point.x))
         {
-            this._center = point;
+            this._center.x = point.x;
+        }
+        if(!isNaN(point.y))
+        {
+            this._center.y = point.y;
         }
     };
     this.getRadius = function ()

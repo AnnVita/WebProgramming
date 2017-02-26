@@ -30,9 +30,13 @@ var CRectangle = function() {
     };
     this.setPosition = function(point)
     {
-        if(!isNaN(point.x) && !isNaN(point.y))
+        if(!isNaN(point.x))
         {
-            this._position = point;
+            this._position.x = point.x;
+        }
+        if(!isNaN(point.y))
+        {
+            this._position.y = point.y;
         }
     };
     this.getSize = function()

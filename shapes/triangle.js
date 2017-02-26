@@ -46,5 +46,9 @@ var CTriangle = function() {
         {
             this._vertices[vertexNumber] = point;
         }
+        else
+        {
+            console.log("bad triangle");
+        }
     };
 };
