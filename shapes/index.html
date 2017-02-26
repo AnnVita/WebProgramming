@@ -1,18 +1,97 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>canvasExample</title>
+    <title>CanvasController</title>
     <meta charset='utf-8' />
-    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script type='text/javascript' src='shape.js'></script>
+    <script type='text/javascript' src='rectangle.js'></script>
+    <script type='text/javascript' src='triangle.js'></script>
+    <script type='text/javascript' src='circle.js'></script>
+    <script type='text/javascript' src='script.js'></script>
   </head>
   <body>
-    <canvas height='500' width='700' id='canvas'>Обновите браузер</canvas>
-    <select id="shape-select" name="shape-select">
-      <option disabled>choose shape</option>
-      <option selected value="rectangle">Rectangle</option>
-      <option value="triangle">Triangle</option>
-      <option value="circle">Circle</option>
-    </select>
-    <script type="text/javascript">start();</script>
+    <canvas height='500' width='700' class='canvas' id='canvas'>Обновите браузер</canvas>
+    <div class='shape-control'>
+      <select class='shape-select' id='shape-select' name='shape-select'>
+          <option disabled>choose shape</option>
+          <option selected value='rectangle'>Rectangle</option>
+          <option value='triangle'>Triangle</option>
+          <option value='circle'>Circle</option>
+      </select>
+      <div class='color-parameters'>
+        <div class='property'>
+          <div class='property-signature'>Fill color:</div>
+          <input type='text' class='input-text' placeholder='#FFFFFF' value='#00FF00' id='fill-color' />
+        </div>
+        <div class='property'>
+          <div class='property-signature'>Border color:</div>
+          <input type='text' class='input-text' placeholder='#FFFFFF' value='#0000FF' id='border-color' />
+        </div>
+      </div>
+      <div class='shape-information'>
+        <div class='shape-parameters' id='rectangle-parameters'>
+          <div class='property'>
+            <div class='property-signature'>X coordinate:</div>
+            <input type='text' placeholder='0' value='20' class='input-text' id='rectangle-x' />
+          </div>
+          <div class='property'>
+            <div class='property-signature'>Y coordinate:</div>
+            <input type='text' placeholder='0' value='20' class='input-text' id='rectangle-y' />
+          </div>
+          <div class='property'>
+            <div class='property-signature'>Width:</div>
+            <input type='text' placeholder='0' value='200' class='input-text' id='rectangle-width' />
+          </div>
+          <div class='property'>
+            <div class='property-signature'>Height:</div>
+            <input type='text' placeholder='0' value='100' class='input-text' id='rectangle-height' />
+          </div>
+        </div>
+        <div class='shape-parameters' id='triangle-parameters'>
+          <div class='property'>
+            <div class='property-signature'>First x:</div>
+            <input type='text' placeholder='0' value='10' class='input-text' id='first-x' />
+          </div>
+          <div class='property'>
+            <div class='property-signature'>First y:</div>
+            <input type='text' placeholder='0' value='10' class='input-text' id='first-y' />
+          </div>
+          <div class='property'>
+            <div class='property-signature'>Second x:</div>
+            <input type='text' placeholder='0' value='10' class='input-text' id='second-x' />
+          </div>
+          <div class='property'>
+            <div class='property-signature'>Second y:</div>
+            <input type='text' placeholder='0' value='400' class='input-text' id='second-y' />
+          </div>
+          <div class='property'>
+            <div class='property-signature'>Third x:</div>
+            <input type='text' placeholder='0' value='10' class='input-text' id='third-x' />
+          </div>
+          <div class='property'>
+            <div class='property-signature'>Third y:</div>
+            <input type='text' placeholder='0' value='300' class='input-text' id='third-y' />
+          </div>
+        </div>
+        <div class='shape-parameters' id='circle-parameters'>
+          <div class='property'>
+            <div class='property-signature'>Center x:</div>
+            <input type='text' placeholder='0' value='' class='input-text' id='circle-x' />
+          </div>
+          <div class='property'>
+            <div class='property-signature'>Center y:</div>
+            <input type='text' placeholder='0' value='' class='input-text' id='circle-y' />
+          </div>
+          <div class='property'>
+            <div class='property-signature'>Radius:</div>
+            <input type='text' placeholder='0' value='' class='input-text' id='circle-radius' />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type='text/javascript'>start();</script>
   </body>
 </html>

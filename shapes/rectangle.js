@@ -2,18 +2,18 @@
  * Created by annvita on 21.02.17.
  */
 var CRectangle = function() {
-    this.__proto__ = CShape;
-    this._position = point;
-    this._size = point;
+    this.prototype = Object.create(new CShape());
+    this._position = new Point(20, 20);
+    this._size = new Point(200, 100);
     this.draw = function (target)
     {
+        target.lineWidth = this.prototype.getBorderWidth();
+        target.fillStyle = this.prototype.getFillColor();
+        target.strokeStyle = this.prototype.getBorderColor();
         target.beginPath();
         target.rect(this._position.x, this._position.y, this._size.x, this._size.y);
         target.closePath();
-        target.fillStyle = this._fillColor;
         target.fill();
-        target.strokeStyle = this._borderColor;
-        target.lineWidth = this._borderWidth;
         target.stroke();
     };
     this.calculatePerimeter = function()
@@ -28,9 +28,12 @@ var CRectangle = function() {
     {
         return this._position;
     };
-    this.setPosition = function(position)
+    this.setPosition = function(point)
     {
-        this._position = position;
+        if(!isNaN(point.x) && !isNaN(point.y))
+        {
+            this._position = point;
+        }
     };
     this.getSize = function()
     {
@@ -38,7 +41,10 @@ var CRectangle = function() {
     };
     this.setSize = function(width, height)
     {
-        this._size.x = width;
-        this._size.y = height;
+        if(!isNaN(width) && !isNaN(height))
+        {
+            this._size.x = width;
+            this._size.y = height;
+        }
     };
 };

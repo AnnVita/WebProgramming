@@ -1,14 +1,14 @@
 /**
  * Created by annvita on 21.02.17.
  */
-var point = {
-    x : 0,
-    y : 0
+var Point = function (newX, newY) {
+    this.x = newX;
+    this.y = newY;
 };
 
 var CShape = function () {
-    this._fillColor = "#00001F";
-    this._borderColor = "#FFF000";
+    this._fillColor = '#00FF00';
+    this._borderColor = '#0000FF';
     this._borderWidth = 10;
     this.getFillColor = function ()
     {
@@ -26,7 +26,19 @@ var CShape = function () {
     {
         this._borderColor = newValue;
     };
+    this.getBorderWidth = function ()
+    {
+        return this._borderWidth;
+    };
+    this.setBorderWidth = function (newValue)
+    {
+        if (!isNaN(newValue))
+        {
+            this._borderWidth = newValue;
+        }
+    };
     this.draw = function(target) {};
     this.calculateArea = function() {};
     this.calculatePerimeter = function() {};
 };
+

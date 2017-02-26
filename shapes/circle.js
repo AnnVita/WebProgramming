@@ -2,18 +2,18 @@
  * Created by annvita on 21.02.17.
  */
 var CCircle = function () {
-    this.__proto__ = CShape;
-    this._center = point;
-    this._radius = 20;
+    this.prototype = Object.create(new CShape());
+    this._center = new Point(200, 200);
+    this._radius = 100;
     this.draw = function (target)
     {
+        target.lineWidth = this.prototype.getBorderWidth();
+        target.fillStyle = this.prototype.getFillColor();
+        target.strokeStyle = this.prototype.getBorderColor();
         target.beginPath();
         target.arc(this._center.x, this._center.y, this._radius, 0, Math.PI*2, false);
         target.closePath();
-        target.fillStyle = this._fillColor;
-        target.strokeStyle = this._borderColor;
         target.fill();
-        target.lineWidth = this._borderWidth;
         target.stroke();
     };
     this.calculateArea = function()
@@ -27,17 +27,23 @@ var CCircle = function () {
     this.getCenter = function ()
     {
         return this._center;
-    }
+    };
     this.setCenter = function (point)
     {
-        this._center = point;
-    }
+        if(!isNaN(point.x) && !isNaN(point.y))
+        {
+            this._center = point;
+        }
+    };
     this.getRadius = function ()
     {
         return this._radius;
-    }
+    };
     this.setRadius = function (radius)
     {
-        this._radius = radius;
-    }
+        if(!isNaN(radius))
+        {
+            this._radius = radius;
+        }
+    };
 };

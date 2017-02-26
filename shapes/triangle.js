@@ -7,19 +7,19 @@ function getSideLength(firstPoint, secondPoint)
 }
 
 var CTriangle = function() {
-    this.__proto__ = CShape;
-    this._vertices = [point, point, point];
+    this.prototype = Object.create(new CShape());
+    this._vertices = [new Point(10, 10), new Point(400, 10), new Point(10, 300)];
     this.draw = function (target)
     {
+        target.lineWidth = this.prototype.getBorderWidth();
+        target.fillStyle = this.prototype.getFillColor();
+        target.strokeStyle = this.prototype.getBorderColor();
         target.beginPath();
         target.moveTo(this._vertices[0].x, this._vertices[0].y);
         target.lineTo(this._vertices[1].x, this._vertices[1].y);
         target.lineTo(this._vertices[2].x, this._vertices[2].y);
         target.closePath();
-        target.fillStyle = this._fillColor;
         target.fill();
-        target.strokeStyle = this._borderColor;
-        target.lineWidth = this._borderWidth;
         target.stroke();
     };
     this.calculatePerimeter = function()
@@ -42,6 +42,9 @@ var CTriangle = function() {
     };
     this.setVertex = function(vertexNumber, point)
     {
-        this._vertices[vertexNumber] = point;
+        if(!isNaN(point.x) && !isNaN(point.y))
+        {
+            this._vertices[vertexNumber] = point;
+        }
     };
 };
