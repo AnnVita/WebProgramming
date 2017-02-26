@@ -1,65 +1,16 @@
 /**
- * Created by annvita on 15.02.17.
+ * Created by annvita on 26.02.17.
  */
-function start()
+function getShapeType()
 {
-    var canvas = document.getElementById('canvas');
-    var context = canvas.getContext('2d');
+    return document.getElementById('shape-select').value;
+}
 
-    var shape;
-    var shapeSelect = document.getElementById('shape-select');
-
-    var rectangleMenu = document.getElementById('rectangle-parameters');
-    var triangleMenu = document.getElementById('triangle-parameters');
-    var circleMenu = document.getElementById('circle-parameters');
-
-    shapeSelect.onchange = function() {
-        if (shapeSelect.value === 'rectangle')
-        {
-            shape = new CRectangle();
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            shape.draw(context);
-            triangleMenu.style.display = 'none';
-            circleMenu.style.display = 'none';
-            rectangleMenu.style.display = 'block';
-        }
-        else if (shapeSelect.value === 'triangle')
-        {
-            shape = new CTriangle();
-            console.log(shape.calculateArea());
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            shape.draw(context);
-            rectangleMenu.style.display = 'none';
-            circleMenu.style.display = 'none';
-            triangleMenu.style.display = 'block';
-        }
-        else if (shapeSelect.value === 'circle')
-        {
-            shape = new CCircle();
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            shape.draw(context);
-            triangleMenu.style.display = 'none';
-            rectangleMenu.style.display = 'none';
-            circleMenu.style.display = 'block';
-        }
-    };
-    var colorMenu = {
-        'fillColor' : document.getElementById('fill-color'),
-        'borderColor' : document.getElementById('border-color')
-    };
-
-    colorMenu['fillColor'].onchange = function(){
-        shape.prototype.setFillColor(colorMenu['fillColor'].value);
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        shape.draw(context);
-    };
-    colorMenu['borderColor'].onchange = function(){
-        shape.prototype.setBorderColor(colorMenu['borderColor'].value);
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        shape.draw(context);
-    };
-
-    if (shapeSelect.value === 'rectangle')
+function handleMenuItems()
+{
+    handleShapeMenu();
+    var shapeType = getShapeType();
+    if (shapeType === 'rectangle')
     {
         var rectangleParameters = {
             'x' : document.getElementById('rectangle-x'),
@@ -80,7 +31,7 @@ function start()
         };
         rectangleParameters['height'].onchange = rectangleParameters['width'].onchange;
     }
-    else if (shapeSelect.value === 'triangle')
+    else if (shapeType === 'triangle')
     {
         var triangleParameters = {
             'first-x' : document.getElementById('first-x'),
@@ -112,7 +63,7 @@ function start()
         };
         triangleParameters['third-y'].onchange = triangleParameters['third-x'].onchange;
     }
-    else if (shapeSelect.value === 'circle')
+    else if (shapeType === 'circle')
     {
         var circleParameters = {
             'circle-x' : document.getElementById('circle-x'),
@@ -132,3 +83,53 @@ function start()
         };
     }
 }
+
+function handleShapeMenu()
+{
+    var shapeMenu = {
+        'fillColor' : document.getElementById('fill-color'),
+        'borderColor' : document.getElementById('border-color')
+    };
+
+    shapeMenu['fillColor'].onchange = function() {
+        shape.prototype.setFillColor(shapeMenu['fillColor'].value);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        shape.draw(context);
+    };
+
+    shapeMenu['borderColor'].onchange = function() {
+        shape.prototype.setBorderColor(shapeMenu['borderColor'].value);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        shape.draw(context);
+    };
+}
+
+function resetMenu()
+{
+
+}
+
+function displayNewMenu()
+{
+    var shapeType = getShapeType();
+    var rectangleMenu = document.getElementById('rectangle-parameters');
+    var triangleMenu = document.getElementById('triangle-parameters');
+    var circleMenu = document.getElementById('circle-parameters');
+
+    if (shapeType === 'rectangle')
+    {
+        hideItems([triangleMenu, circleMenu]);
+        rectangleMenu.style.display = 'block';
+    }
+    else if (shapeType === 'triangle')
+    {
+        hideItems([rectangleMenu, circleMenu]);
+        triangleMenu.style.display = 'block';
+    }
+    else if (shapeType === 'circle')
+    {
+        hideItems([rectangleMenu, triangleMenu]);
+        circleMenu.style.display = 'block';
+    }
+}
+
