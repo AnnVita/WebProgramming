@@ -15,6 +15,21 @@ function redraw(shape, canvas, context)
     shape.draw(context);
 }
 
+function hideElements(elements)
+{
+    for (var i = 0; i < elements.length(); ++i)
+    {
+        elements[i].style.display = 'none';
+    }
+}
+
+function showElements(elements)
+{
+    for (var i = 0; i < elements.length(); ++i)
+    {
+        elements[i].style.display = 'block';
+    }
+}
 
 function start()
 {
@@ -33,26 +48,22 @@ function start()
         {
             shape = new CRectangle();
             redraw(shape, canvas, context);
-            triangleMenu.style.display = 'none';
-            circleMenu.style.display = 'none';
-            rectangleMenu.style.display = 'block';
+            hideElements([triangleMenu, circleMenu]);
+            showElements([rectangleMenu]);
         }
         else if (shapeSelect.value === 'triangle')
         {
             shape = new CTriangle();
-            console.log(shape.calculateArea());
             redraw(shape, canvas, context);
-            rectangleMenu.style.display = 'none';
-            circleMenu.style.display = 'none';
-            triangleMenu.style.display = 'block';
+            hideElements([rectangleMenu, circleMenu]);
+            showElements([triangleMenu]);
         }
         else if (shapeSelect.value === 'circle')
         {
             shape = new CCircle();
             redraw(shape, canvas, context);
-            triangleMenu.style.display = 'none';
-            rectangleMenu.style.display = 'none';
-            circleMenu.style.display = 'block';
+            hideElements([triangleMenu, rectangleMenu]);
+            showElements(circleMenu);
         }
     };
     var colorMenu = {
