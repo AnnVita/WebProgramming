@@ -9,6 +9,7 @@ function start()
     var shapeSelect = document.getElementById('shape-select');
 
     shapeSelect.onchange = function () {
+        g_clickIteration = 0;
         handleShapeChange(shapeSelect.value);
     };
 

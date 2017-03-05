@@ -1,13 +1,29 @@
+.clearfix:after
+{
+    content: '';
+    display: table;
+    clear: both;
+}
+
 body
 {
     font: 13px Arial, sans-serif;
+}
+
+.container
+{
+    margin: 25px auto;
+    padding: 25px 10px;
+    width: 1240px;
+    height: 500px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .canvas
 {
     margin: 0 20px 0 0;
     float: left;
-    border: 3px #09030d dashed;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .shape-control
@@ -15,20 +31,30 @@ body
     float: left;
     width: 500px;
     height: 500px;
+    position: relative;
 }
 
 .shape-select
 {
     margin: 0 0 16px 0;
-    padding: 5px 5px 5px 34px;
-    -webkit-appearance: none;
-    background-color: #ffc384;
-    height: 34px;
+    padding: 10px;
+    background-color: #ccc1bf;
     width: 432px;
     box-sizing: border-box;
     border: 1px;
     font-size: 20px;
     display: block;
+}
+
+.shape-info
+{
+    padding: 10px;
+    width: 432px;
+    font-size: 15px;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .property
