@@ -18,13 +18,11 @@ function start()
 
     colorMenu['fillColor'].onchange = function() {
         g_shape.prototype.setFillColor(colorMenu['fillColor'].value);
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        g_shape.draw(context);
+        redraw();
     };
     colorMenu['borderColor'].onchange = function() {
         g_shape.prototype.setBorderColor(colorMenu['borderColor'].value);
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        g_shape.draw(context);
+        redraw();
     };
 
     var rectangleParameters = {
@@ -35,12 +33,12 @@ function start()
     };
     rectangleParameters['x'].onchange = function(){
         g_shape.setPosition(new Point(rectangleParameters['x'].value, rectangleParameters['y'].value));
-        redraw(g_shape, canvas, context);
+        redraw();
     };
     rectangleParameters['y'].onchange = rectangleParameters['x'].onchange;
     rectangleParameters['width'].onchange = function() {
         g_shape.setSize(rectangleParameters['width'].value, rectangleParameters['height'].value);
-        redraw(g_shape, canvas, context);
+        redraw();
     };
     rectangleParameters['height'].onchange = rectangleParameters['width'].onchange;
 
@@ -56,19 +54,19 @@ function start()
 
     triangleParameters['first-x'].onchange = function () {
         g_shape.setVertex(0, new Point(triangleParameters['first-x'].value, triangleParameters['first-y'].value));
-        redraw(g_shape, canvas, context);
+        redraw();
     };
     triangleParameters['first-y'].onchange = triangleParameters['first-x'].onchange;
 
     triangleParameters['second-x'].onchange = function () {
         g_shape.setVertex(1, new Point(triangleParameters['second-x'].value, triangleParameters['second-y'].value));
-        redraw(g_shape, canvas, context);
+        redraw();
     };
     triangleParameters['second-y'].onchange = triangleParameters['second-x'].onchange;
 
     triangleParameters['third-x'].onchange = function () {
         g_shape.setVertex(2, new Point(triangleParameters['third-x'].value, triangleParameters['third-y'].value));
-        redraw(g_shape, canvas, context);
+        redraw();
     };
     triangleParameters['third-y'].onchange = triangleParameters['third-x'].onchange;
 
@@ -79,14 +77,12 @@ function start()
     };
     circleParameters['circle-x'].onchange = function () {
         g_shape.setCenter(new Point(circleParameters['circle-x'].value, circleParameters['circle-y'].value));
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        g_shape.draw(context);
+        redraw();
     };
     circleParameters['circle-y'].onchange = circleParameters['circle-x'].onchange;
     circleParameters['circle-radius'].onchange = function () {
         g_shape.setRadius(circleParameters['circle-radius'].value);
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        g_shape.draw(context);
+        redraw();
     };
 
     if (shapeSelect.value === 'rectangle')
