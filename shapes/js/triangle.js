@@ -1,13 +1,9 @@
 /**
  * Created by annvita on 21.02.17.
  */
-function getSideLength(firstPoint, secondPoint)
-{
-    return Math.sqrt(Math.pow((firstPoint.x - secondPoint.x), 2) + Math.pow((firstPoint.y - secondPoint.y), 2));
-}
-
 var CTriangle = function() {
     this.prototype = Object.create(new CShape());
+    this.prototype._shapeType = 'triangle';
     this._vertices = [new Point(10, 10), new Point(400, 10), new Point(10, 300)];
     this.draw = function (target)
     {
@@ -24,16 +20,16 @@ var CTriangle = function() {
     };
     this.calculatePerimeter = function()
     {
-        return getSideLength(this._vertices[0], this._vertices[1])
-            + getSideLength(this._vertices[1], this._vertices[2])
-            + getSideLength(this._vertices[0], this._vertices[2]);
+        return getLineLength(this._vertices[0], this._vertices[1])
+            + getLineLength(this._vertices[1], this._vertices[2])
+            + getLineLength(this._vertices[0], this._vertices[2]);
     };
     this.calculateArea = function()
     {
         var halfPerimeter = this.calculatePerimeter() * 0.5;
-        return Math.sqrt(halfPerimeter*(halfPerimeter - getSideLength(this._vertices[0], this._vertices[1]))*
-            (halfPerimeter - getSideLength(this._vertices[1], this._vertices[2]))*
-            (halfPerimeter - getSideLength(this._vertices[2], this._vertices[0]))
+        return Math.sqrt(halfPerimeter*(halfPerimeter - getLineLength(this._vertices[0], this._vertices[1]))*
+            (halfPerimeter - getLineLength(this._vertices[1], this._vertices[2]))*
+            (halfPerimeter - getLineLength(this._vertices[2], this._vertices[0]))
         );
     };
     this.getVertex = function(vertexNumber)
@@ -42,13 +38,18 @@ var CTriangle = function() {
     };
     this.setVertex = function(vertexNumber, point)
     {
-        if(!isNaN(point.x) && !isNaN(point.y))
+        if (!isNaN(point.x) && !isNaN(point.y))
         {
             this._vertices[vertexNumber] = point;
         }
         else
         {
-            console.log("bad triangle");
+            console.log('bad triangle');
         }
-    };
+    }
 };
+
+function getLineLength(firstPoint, secondPoint)
+{
+    return Math.sqrt(Math.pow((firstPoint.x - secondPoint.x), 2) + Math.pow((firstPoint.y - secondPoint.y), 2));
+}

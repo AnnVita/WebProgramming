@@ -3,6 +3,7 @@
  */
 var CCircle = function () {
     this.prototype = Object.create(new CShape());
+    this.prototype._shapeType = 'circle';
     this._center = new Point(200, 200);
     this._radius = 100;
     this.draw = function (target)

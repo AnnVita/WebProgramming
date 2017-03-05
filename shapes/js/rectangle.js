@@ -3,6 +3,7 @@
  */
 var CRectangle = function() {
     this.prototype = Object.create(new CShape());
+    this.prototype._shapeType = 'rectangle';
     this._position = new Point(20, 20);
     this._size = new Point(200, 100);
     this.draw = function (target)

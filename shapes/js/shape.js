@@ -10,6 +10,11 @@ var CShape = function () {
     this._fillColor = '#00FF00';
     this._borderColor = '#0000FF';
     this._borderWidth = 10;
+    this._shapeType = 'shape';
+    this.getShapeType = function ()
+    {
+        return this._shapeType;
+    };
     this.getFillColor = function ()
     {
         return this._fillColor;
