@@ -14,10 +14,14 @@ function start()
     };
 
     setMenuOnchangeEvents();
+    setCanvasOnclickEvent();
+}
 
+function setCanvasOnclickEvent()
+{
     var canvas = document.getElementById('canvas');
 
-    canvas.addEventListener("click", onClick, false);
+    canvas.addEventListener('click', onClick, false);
 }
 
 function onClick(e) {
@@ -62,6 +66,7 @@ function onClick(e) {
             g_clickIteration = 0;
         }
     }
+    refreshShapeInfo();
 }
 
 function getCursorPosition(e) {
@@ -79,7 +84,8 @@ function getCursorPosition(e) {
         y = e.clientY + document.body.scrollTop +
             document.documentElement.scrollTop;
     }
-    return new Point(x, y);
+    var offset = document.getElementById('canvas').getBoundingClientRect();
+    return new Point(x - offset.left, y - offset.top);
 }
 
 function handleShapeChange(shapeType)
@@ -109,6 +115,12 @@ function handleShapeChange(shapeType)
         hideElements([triangleMenu, rectangleMenu]);
         showElements([circleMenu]);
     }
+    refreshShapeInfo();
+}
+
+function refreshShapeInfo()
+{
+    document.getElementById('shape-info').innerHTML = g_shape.getType() + '<br /> area:' + g_shape.calculateArea() + ' perimeter:' + g_shape.calculatePerimeter();
 }
 
 function setMenuOnchangeEvents()
@@ -148,11 +160,13 @@ function setRectangleOnchangeEvents()
     rectangleParameters['x'].onchange = function(){
         g_shape.setPosition(new Point(rectangleParameters['x'].value, rectangleParameters['y'].value));
         redraw();
+        refreshShapeInfo();
     };
     rectangleParameters['y'].onchange = rectangleParameters['x'].onchange;
     rectangleParameters['width'].onchange = function() {
         g_shape.setSize(rectangleParameters['width'].value, rectangleParameters['height'].value);
         redraw();
+        refreshShapeInfo();
     };
     rectangleParameters['height'].onchange = rectangleParameters['width'].onchange;
 }
@@ -171,18 +185,21 @@ function setTriangleOnchangeEvents()
     triangleParameters['first-x'].onchange = function () {
         g_shape.setVertex(0, new Point(triangleParameters['first-x'].value, triangleParameters['first-y'].value));
         redraw();
+        refreshShapeInfo();
     };
     triangleParameters['first-y'].onchange = triangleParameters['first-x'].onchange;
 
     triangleParameters['second-x'].onchange = function () {
         g_shape.setVertex(1, new Point(triangleParameters['second-x'].value, triangleParameters['second-y'].value));
         redraw();
+        refreshShapeInfo();
     };
     triangleParameters['second-y'].onchange = triangleParameters['second-x'].onchange;
 
     triangleParameters['third-x'].onchange = function () {
         g_shape.setVertex(2, new Point(triangleParameters['third-x'].value, triangleParameters['third-y'].value));
         redraw();
+        refreshShapeInfo();
     };
     triangleParameters['third-y'].onchange = triangleParameters['third-x'].onchange;
 }
@@ -198,11 +215,13 @@ function setCircleOnchangeEvents()
     circleParameters['circle-x'].onchange = function () {
         g_shape.setCenter(new Point(circleParameters['circle-x'].value, circleParameters['circle-y'].value));
         redraw();
+        refreshShapeInfo();
     };
     circleParameters['circle-y'].onchange = circleParameters['circle-x'].onchange;
     circleParameters['circle-radius'].onchange = function () {
         g_shape.setRadius(circleParameters['circle-radius'].value);
         redraw();
+        refreshShapeInfo();
     };
 }
 

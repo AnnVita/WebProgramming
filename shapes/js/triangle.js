@@ -5,6 +5,10 @@ var CTriangle = function() {
     this.prototype = Object.create(new CShape());
     this.prototype._shapeType = 'triangle';
     this._vertices = [new Point(10, 10), new Point(400, 10), new Point(10, 300)];
+    this.getType = function ()
+    {
+        return this.prototype._shapeType;
+    }
     this.draw = function (target)
     {
         target.lineWidth = this.prototype.getBorderWidth();
@@ -20,17 +24,17 @@ var CTriangle = function() {
     };
     this.calculatePerimeter = function()
     {
-        return getLineLength(this._vertices[0], this._vertices[1])
+        return (getLineLength(this._vertices[0], this._vertices[1])
             + getLineLength(this._vertices[1], this._vertices[2])
-            + getLineLength(this._vertices[0], this._vertices[2]);
+            + getLineLength(this._vertices[0], this._vertices[2])).toFixed(2);
     };
     this.calculateArea = function()
     {
         var halfPerimeter = this.calculatePerimeter() * 0.5;
-        return Math.sqrt(halfPerimeter*(halfPerimeter - getLineLength(this._vertices[0], this._vertices[1]))*
+        return (Math.sqrt(halfPerimeter*(halfPerimeter - getLineLength(this._vertices[0], this._vertices[1]))*
             (halfPerimeter - getLineLength(this._vertices[1], this._vertices[2]))*
             (halfPerimeter - getLineLength(this._vertices[2], this._vertices[0]))
-        );
+        )).toFixed(2);
     };
     this.getVertex = function(vertexNumber)
     {
