@@ -3,6 +3,6 @@ module.exports =
     dist:
     {
         src: ['js/**'],
-        dest: 'js/main.js'
+        dest: '.build/js/main.js'
     }
 };

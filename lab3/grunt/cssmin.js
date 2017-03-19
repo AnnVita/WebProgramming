@@ -2,7 +2,7 @@ module.exports =
 {
     dist:
     {
-        src: ['css/index.css'],
+        src: ['css/*.css'],
         dest: '.build/css/main.min.css'
     }
 };

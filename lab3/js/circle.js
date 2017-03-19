@@ -6,6 +6,10 @@ var CCircle = function () {
     this.prototype._shapeType = 'circle';
     this._center = new Point(200, 200);
     this._radius = 100;
+    this.getType = function ()
+    {
+        return this.prototype._shapeType;
+    };
     this.draw = function (target)
     {
         target.lineWidth = this.prototype.getBorderWidth();
@@ -19,11 +23,11 @@ var CCircle = function () {
     };
     this.calculateArea = function()
     {
-        return this._radius * this._radius * Math.PI;
+        return (this._radius * this._radius * Math.PI).toFixed(2);
     };
     this.calculatePerimeter = function()
     {
-        return 2 * this._radius * Math.PI;
+        return (2 * this._radius * Math.PI).toFixed(2);
     };
     this.getCenter = function ()
     {

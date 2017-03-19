@@ -6,6 +6,10 @@ var CRectangle = function() {
     this.prototype._shapeType = 'rectangle';
     this._position = new Point(20, 20);
     this._size = new Point(200, 100);
+    this.getType = function ()
+    {
+        return this.prototype._shapeType;
+    };
     this.draw = function (target)
     {
         target.lineWidth = this.prototype.getBorderWidth();
@@ -19,11 +23,11 @@ var CRectangle = function() {
     };
     this.calculatePerimeter = function()
     {
-        return this._size.x*2 + this._size.y*2;
+        return (this._size.x*2 + this._size.y*2).toFixed(2);
     };
     this.calculateArea = function()
     {
-        return this._size.x*this._size.y;
+        return (this._size.x*this._size.y).toFixed(2);
     };
     this.getPosition = function()
     {
