@@ -1,0 +1,10 @@
+default:
+ - 'clean'
+ - 'concat'
+ - 'eslint'
+ - 'uglify'
+ - 'cssmin'
+ - 'copy:main'
+ - 'hashres:prod'
+ - 'connect'
+ - 'watch'

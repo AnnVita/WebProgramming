@@ -1,0 +1,97 @@
+.clearfix:after
+{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+body
+{
+    font: 13px Arial, sans-serif;
+}
+
+.container
+{
+    margin: 25px auto;
+    padding: 25px 10px;
+    width: 1240px;
+    height: 500px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.canvas
+{
+    margin: 0 20px 0 0;
+    float: left;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.shape-control
+{
+    float: left;
+    width: 500px;
+    height: 500px;
+    position: relative;
+}
+
+.shape-select
+{
+    margin: 0 0 16px 0;
+    padding: 10px;
+    background-color: #ccc1bf;
+    width: 432px;
+    box-sizing: border-box;
+    border: 1px;
+    font-size: 20px;
+    display: block;
+}
+
+.shape-info
+{
+    padding: 10px;
+    width: 432px;
+    font-size: 15px;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.property
+{
+    margin: 0 0 20px 0;
+    display: inline-block;
+}
+
+.property-signature
+{
+    margin: 0 0 10px 0;
+}
+
+.color-parameters
+{
+
+}
+
+.input-text
+{
+    margin: 0 20px 0 0;
+    padding: 6px;
+    width: 190px;
+    font-size: 18px;
+}
+
+#rectangle-parameters
+{
+    display: none;
+}
+
+#triangle-parameters
+{
+    display: none;
+}
+
+#circle-parameters
+{
+    display: none;
+}
