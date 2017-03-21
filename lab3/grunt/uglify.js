@@ -4,7 +4,7 @@ module.exports =
     {
         files:
         {
-            '.build/js/main.min.js': ['js/main.js']
+            '.build/js/main.min.js': ['.build/js/main.js']
         }
     }
 };
