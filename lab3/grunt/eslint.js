@@ -4,5 +4,5 @@ module.exports =
     {
         configFile: 'conf/eslint.json'
     },
-    validate: ['.build/js/main.js']
+    validate: ['main.js']
 };

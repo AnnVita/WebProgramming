@@ -42,7 +42,7 @@ var CShape = function () {
             this._borderWidth = newValue;
         }
     };
-    this.draw = function(target) {};
+    this.draw = function() {};
     this.calculateArea = function() {};
     this.calculatePerimeter = function() {};
 };
