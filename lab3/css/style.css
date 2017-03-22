@@ -36,9 +36,9 @@ body
 
 .shape-select
 {
-    margin: 0 0 16px 0;
+    margin: 0 0 17px 0;
     padding: 10px;
-    background-color: #ccc1bf;
+    background-color: #000;
     width: 432px;
     box-sizing: border-box;
     border: 1px;

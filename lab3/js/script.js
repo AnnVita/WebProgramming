@@ -11,6 +11,8 @@ shapeSelect.onchange = function () {
     handleShapeChange(shapeSelect.value);
 };
 
+alert('It works');
+
 setMenuOnchangeEvents();
 setCanvasOnclickEvent();
 

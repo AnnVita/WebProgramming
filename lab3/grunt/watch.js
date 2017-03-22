@@ -6,7 +6,7 @@ module.exports =
     },
     scripts:
     {
-        files: ['index.html', 'js/**', 'css/index.css'], 
+        files: ['index.html', 'js/**', 'css/*.css'], 
         tasks: ['concat', 'eslint', 'uglify', 'cssmin', 'hashres:prod', 'copy:main']
     }
 };
