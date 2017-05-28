@@ -7,7 +7,7 @@ const MAX_Y: number = 0.0000907687489 + 0.00000000374 / 2;
 const WIDTH: number = 800;
 const HEIGHT: number = 800;
 const ITERATIONS: number = 1000;
-const ESCAPE_RADIUS: number = 4;
+const ESCAPE_RADIUS: number = 4; 
 
 const CR_STEP: number = (MAX_X - MIN_X) / WIDTH;
 const CI_STEP: number = (MAX_Y - MIN_Y) / HEIGHT;
@@ -17,7 +17,7 @@ export class application {
     private canvas: CanvasRenderingContext2D;
 
     constructor() {
-        this.target = document.getElementById("CANVAS_ID") as HTMLCanvasElement;
+        this.target = document.getElementById(CANVAS_ID) as HTMLCanvasElement; 
         this.target.width = WIDTH;
         this.target.height = HEIGHT;
         this.canvas = this.target.getContext("2d");
